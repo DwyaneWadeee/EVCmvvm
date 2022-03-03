@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clickable="true"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:drawableTop="@drawable/ic_stateflag_networkerror"
+        android:drawablePadding="20dp"
+        android:text="服务出错，稍候再试"
+        android:textColor="#AAAAAA"
+        android:textSize="16dp" />
+
+    <TextView
+        android:id="@+id/tvReload"
+        android:gravity="center"
+        android:layout_marginTop="29dp"
+        android:layout_width="140dp"
+        android:layout_height="44dp"
+        android:background="@drawable/bg_button_stroke_radius_22"
+        android:text="刷新"
+        android:textColor="@color/colorAccent_2CCCD3"
+        android:textSize="16dp" />
+
+</LinearLayout>

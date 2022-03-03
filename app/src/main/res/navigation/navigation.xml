@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@+id/tabFragment">
+
+    <fragment
+        android:id="@+id/tabFragment"
+        android:name="com.evc.evcmvvm.ui.HomeTabFragment"
+        android:label="fragment_tab"
+        tools:layout="activity_bottom_navigation">
+        <action
+            android:id="@+id/action_tab_to_browser"
+            app:destination="@id/browserActivity" />
+
+        <action
+            android:id="@+id/action_tab_to_main"
+            app:destination="@id/mainActivity" />
+        <action
+            android:id="@+id/action_tab_to_demo"
+            app:destination="@id/demoActivity" />
+<!--        <action-->
+<!--            android:id="@+id/action_tab_to_login"-->
+<!--            app:destination="@id/loginActivity" />-->
+<!--        <action-->
+<!--            android:id="@+id/action_tab_to_share"-->
+<!--            app:destination="@id/shareActivity" />-->
+<!--        <action-->
+<!--            android:id="@+id/action_tab_to_colect"-->
+<!--            app:destination="@id/collectActivity" />-->
+    </fragment>
+
+<!--    <fragment-->
+<!--        android:id="@+id/loginActivity"-->
+<!--        android:name="com.evc.evcmvvm.ui.login.LoginActivity"-->
+<!--        android:label="activity_login"-->
+<!--        tools:layout="@layout/fragment_login">-->
+<!--    </fragment>-->
+
+<!--    <activity-->
+<!--        android:id="@+id/shareActivity"-->
+<!--        android:name="com.evc.evcmvvm.ui.share.ShareActivity"-->
+<!--        android:label="activity_share"-->
+<!--        tools:layout="@layout/activity_share">-->
+
+<!--    </activity>-->
+
+    <activity
+        android:id="@+id/mainActivity"
+        android:name="com.evc.evcmvvm.MainActivity"
+        android:label="actvitiy_main"
+        tools:layout="@layout/activity_main">
+    </activity>
+
+    <activity
+        android:id="@+id/demoActivity"
+        android:name="com.evc.evcmvvm.ui.demopage.DemoActivity"
+        android:label="actvitiy_demo"
+        >
+    </activity>
+
+    <activity
+        android:id="@+id/browserActivity"
+        android:name="com.evc.evcmvvm.ui.browser.BrowserActivity"
+        android:label="activity_browser"
+        tools:layout="@layout/activity_browser">
+        <argument
+            android:name="url"
+            android:defaultValue="www.wanandroid.com"
+            app:argType="string" />
+
+    </activity>
+
+<!--    <activity-->
+<!--        android:id="@+id/collectActivity"-->
+<!--        android:name="com.evc.evcmvvm.ui.collect.MyCollectActivity"-->
+<!--        android:label="activity_collect"-->
+<!--        tools:layout="@layout/activity_collect">-->
+<!--    </activity>-->
+
+</navigation>

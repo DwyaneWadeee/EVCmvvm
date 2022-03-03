@@ -1,0 +1,121 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+    id 'kotlin-android-extensions'
+    id 'kotlin-kapt'
+}
+
+android {
+    compileSdk Versions.compileSdk
+
+    defaultConfig {
+//        applicationId "com.evc.evcmvvm"
+//        versionCode Versions.versionCode
+//        versionName Versions.versionName
+        flavorDimensions "default"
+
+        minSdk Versions.minSdk
+        targetSdk Versions.targetSdk
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+    buildFeatures {
+        dataBinding = true
+    }
+    dataBinding {
+        enabled = true
+    }
+
+
+    productFlavors {
+        //生产环境
+        apppro {
+            applicationId Versions.applicationId
+            versionCode Versions.versionCode
+            versionName Versions.versionName
+            //host地址
+            buildConfigField("String", "API_HOST", "\"http://192.168.10.124:24080/zkhj/\"")
+            manifestPlaceholders = [
+                    APP_LABEL   : "@string/app_name",
+                    APP_ICON    : "@mipmap/ic_launcher",
+                    ROUND_ICON  : "@mipmap/ic_launcher_round",
+                    GD_KEY      : "xxxxxxxx"
+            ]
+        }
+        //测试环境
+        apptest {
+            applicationId Versions.test_applicationId
+            versionCode Versions.test_versionCode
+            versionName Versions.test_versionName
+            buildConfigField("String", "API_HOST", "\"http://192.168.3.100/\"")
+            manifestPlaceholders = [
+                    APP_LABEL   : "@string/app_name_dev",
+                    APP_ICON    : "@mipmap/ic_launcher",
+                    ROUND_ICON  : "@mipmap/ic_launcher_round",
+                    GD_KEY      : "xxxx"
+            ]
+        }
+        //预发布环境
+        apppre {
+            applicationId Versions.stg_applicationId
+            versionCode Versions.stg_versionCode
+            versionName Versions.stg_versionName
+            buildConfigField("String", "API_HOST","\"http://192.168.10.124:24080/zkhj_uat/\"")
+            manifestPlaceholders = [
+                    APP_LABEL   : "@string/app_name_uat",
+                    APP_ICON    : "@mipmap/ic_launcher",
+                    ROUND_ICON  : "@mipmap/ic_launcher_round",
+                    GD_KEY      : "xxxxx"
+            ]
+        }
+    }
+}
+
+dependencies {
+    implementation Deps.appcompat
+    implementation Deps.material
+    implementation Deps.constraintlayout
+
+    implementation Deps.retrofit
+    implementation Deps.retrofit_converter_gson
+    implementation Deps.okhttp_logging_interceptor
+    implementation Deps.persistentCookieJar
+    implementation Deps.baseRecyclerViewAdapterHelper
+    implementation Deps.livedata_ktx
+    implementation Deps.glide
+
+    implementation Deps.koin_core
+    implementation Deps.koin_androidx_scope
+    implementation Deps.koin_androidx_viewmodel
+    implementation Deps.swiperefreshlayout
+    implementation Deps.tencent_mmkv
+    implementation Deps.banner
+
+    implementation Deps.permission
+    kapt Deps.permission_kapt
+    kapt Deps.permission_kapt
+
+    implementation "com.tencent.tbs.tbssdk:sdk:43697"
+
+    implementation project(path: ':ktx')
+    implementation project(path: ':framework')
+
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+
+}
