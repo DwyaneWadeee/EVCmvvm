@@ -31,9 +31,6 @@ class BannerFragment :BaseVMFragment<FragmentBannerTestBinding>(R.layout.fragmen
     }
 
     override fun initView() {
-//        binding.run {
-//            viewModel = viewModel
-//        }
         rl_root.addView(banner)
         initBanner()
     }
